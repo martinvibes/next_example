@@ -1,8 +1,18 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+"use client";
 import Image from "next/image";
+import { initMarqueeeSlider, MarqueeSliderOptions } from "marqueee";
+import ParticleGround from "particleground.ts";
+import { useEffect } from "react";
 
 export default function Home() {
+  useEffect(() => {
+    initMarqueeeSlider("marquee-slider");
+  }, []);
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <>
+      {/* <ParticleGround /> */}
+    <div className="grid grid-rows-[20px_1fr_20px] z-50 items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <Image
           className="dark:invert"
@@ -49,6 +59,21 @@ export default function Home() {
           </a>
         </div>
       </main>
+      <div
+        id="marquee-slider"
+        className=" w-full"
+        data-speed="20"
+        data-space="100"
+      >
+        <div className="marquee-slider-wrapper">
+          <div className="marquee-slider-slides-wrapper flex gap-5">
+            <div className="marquee-slider-slide">Slide 1</div>
+            <div className="marquee-slider-slide">Slide 2</div>
+            <div className="marquee-slider-slide">Slide 3</div>
+            <div className="marquee-slider-slide">Slide 4</div>
+          </div>
+        </div>
+      </div>
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
@@ -97,5 +122,6 @@ export default function Home() {
         </a>
       </footer>
     </div>
+    </>
   );
 }
